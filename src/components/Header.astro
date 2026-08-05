@@ -1,0 +1,42 @@
+---
+const { current = '' } = Astro.props;
+const nav = [
+  ['home', '/', 'Home'],
+  ['selling', '/selling/', 'Sell Your Tubes'],
+  ['testing', '/testing/', 'Tube Testing'],
+  ['about', '/about/', 'About'],
+  ['contact', '/contact/', 'Contact']
+];
+---
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span>Serving New England and collectors nationwide</span>
+    <span><a href="tel:9788752078">978-875-2078</a> &nbsp;·&nbsp; <a href="mailto:ken@antiqueradiosalvage.com">ken@antiqueradiosalvage.com</a></span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/" aria-label="Antique Radio Salvage home">
+      <span class="brand-mark">ARS</span>
+      <span class="brand-copy"><strong>Antique Radio Salvage</strong><span>Vacuum Tube Specialists · Massachusetts</span></span>
+    </a>
+    <button class="menu-button" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" aria-label="Main navigation">
+      {nav.map(([key, href, label]) => <a class={current === key ? 'active' : ''} href={href}>{label}</a>)}
+      <a href="https://www.ebay.com/str/antiqueradiosalvage" target="_blank" rel="noreferrer">Shop</a>
+      <a class="shop" href="https://www.ebay.com/str/antiqueradiosalvage" target="_blank" rel="noreferrer">eBay Store ↗</a>
+    </nav>
+  </div>
+</header>
+<script>
+  const button = document.querySelector('.menu-button');
+  const links = document.querySelector('.nav-links');
+  button?.addEventListener('click', () => {
+    const open = links?.classList.toggle('open') ?? false;
+    button.setAttribute('aria-expanded', String(open));
+  });
+  links?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    links.classList.remove('open');
+    button?.setAttribute('aria-expanded', 'false');
+  }));
+</script>

@@ -1,53 +1,52 @@
-# Antique Radio Salvage Website
+# Antique Radio Salvage — Astro Website
 
-A static, responsive website for Antique Radio Salvage, prepared for GitHub Pages.
+This is the production website for **https://antiqueradiosalvage.com**.
 
-## Pages
+## Why Astro
 
-- `index.html` — Home
-- `selling.html` — Sell Your Tubes
-- `testing.html` — Tube Testing
-- `about.html` — About
-- `contact.html` — Contact form
+Astro creates a fast static website while keeping shared items—navigation, footer, styles and page layouts—in one place. GitHub Actions automatically builds and publishes the site whenever a change is committed to `main`.
 
-## Important: activate the contact form
+## First-time GitHub setup
 
-GitHub Pages serves static files and cannot run PHP. The contact page is prepared for Formspree.
+1. Extract this ZIP on your computer.
+2. Open the existing GitHub repository: `https://github.com/kendslat75/ars`.
+3. Delete the old site files from the repository, except you may keep repository history.
+4. Upload **all files and folders inside this project**, including the hidden `.github` folder.
+5. Commit with the message: `Rebuild website in Astro`.
+6. Open **Settings → Pages**.
+7. Under **Build and deployment → Source**, choose **GitHub Actions**.
+8. Open the repository's **Actions** tab and wait for “Deploy Astro site to GitHub Pages” to finish with a green check.
+9. Visit `https://antiqueradiosalvage.com` and hard-refresh with Ctrl+F5.
 
-1. Create a free account at Formspree.
-2. Create a new form and set the target email to `ken@antiqueradiosalvage.com`.
-3. Formspree will provide an endpoint similar to:
+## Important files
 
-   `https://formspree.io/f/abcdwxyz`
+- `src/pages/` — page content
+- `src/components/Header.astro` — navigation and top contact bar
+- `src/components/Footer.astro` — footer
+- `src/styles/global.css` — all site styling
+- `public/images/` — website images
+- `public/CNAME` — custom domain
+- `.github/workflows/deploy.yml` — automatic deployment
 
-4. Open `contact.html` in GitHub's editor.
-5. Find:
+## Contact form
 
-   `https://formspree.io/f/REPLACE_WITH_FORM_ID`
+The form posts to:
 
-6. Replace it with your actual Formspree endpoint and commit the change.
+`https://formspree.io/f/xzepbarv`
 
-## Publish with GitHub Pages
+Submissions should be forwarded by Formspree to `ken@antiqueradiosalvage.com`.
 
-1. Create a new public GitHub repository. A good name is `antique-radio-salvage`.
-2. Upload all files and the `assets` folder from this package. Do not upload the ZIP itself.
-3. Open the repository's **Settings**.
-4. In the left menu, select **Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select the `main` branch and the `/ (root)` folder.
-7. Click **Save**.
-8. Wait a few minutes. GitHub will display the public site address in the Pages section.
+## Editing locally (optional)
 
-The address will normally look like:
+Install Node.js, then run:
 
-`https://YOUR-GITHUB-USERNAME.github.io/antique-radio-salvage/`
+```bash
+npm install
+npm run dev
+```
 
-## Connect antiqueradiosalvage.com later
+Build check:
 
-In **Settings → Pages**, enter `antiqueradiosalvage.com` under **Custom domain** and save. GitHub will provide the DNS records that must be added at your domain registrar. Enable **Enforce HTTPS** after the domain is verified.
-
-`CNAME.example` is included only as a reference. Do not rename it to `CNAME` until you are ready to connect the domain.
-
-## Update the site
-
-Use GitHub's web editor to change text, or upload replacement files. GitHub Pages automatically republishes after each committed change.
+```bash
+npm run build
+```
